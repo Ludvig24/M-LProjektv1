@@ -13,6 +13,8 @@ namespace M_LProjektv1
             //Introduktion
             Banan her
 
+            paere
+                annas
 
 
 
@@ -27,7 +29,7 @@ namespace M_LProjektv1
         {//MADS SPIL 
     kartoffel
         
-    aeble
+    
         }
 
         
