@@ -15,6 +15,7 @@ namespace M_LProjektv1
                 Soya
                Ris 
                Laks
+                sesam
 
 
         }
