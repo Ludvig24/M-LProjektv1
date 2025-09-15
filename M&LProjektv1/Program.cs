@@ -11,11 +11,8 @@ namespace M_LProjektv1
         static void Main(string[] args)
         {
             //Introduktion
-            Banan her
-
-            paere
-                annas
-
+            
+                Soya
 
 
         }
