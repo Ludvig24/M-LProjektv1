@@ -25,6 +25,7 @@ namespace M_LProjektv1
 
 
         {//MADS SPIL 
+    kartoffel
         
     
         }
