@@ -13,6 +13,7 @@ namespace M_LProjektv1
             //Introduktion
             
                 Soya
+               Ris 
 
 
         }
