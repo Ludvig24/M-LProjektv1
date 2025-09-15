@@ -11,7 +11,7 @@ namespace M_LProjektv1
         static void Main(string[] args)
         {
             //Introduktion
-            Banan her
+           
 
 
 
@@ -25,10 +25,14 @@ namespace M_LProjektv1
 
 
         {//MADS SPIL 
-    kartoffel
-        
-    aeble
-        }
+    Random stp = new Random();
+
+    int stprandom = Random.Next(2);
+        int stprandomnumber = stprandom.next();
+    Console.WriteLine($"Tallet er {stprandomnumber}");
+   
+     
+}
 
         
     }
