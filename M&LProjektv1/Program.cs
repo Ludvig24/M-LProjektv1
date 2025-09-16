@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,27 +31,49 @@ namespace M_LProjektv1
 
             // selve spillet, gerne nogle funktioner om hvordan man gætter et bukstav og så bruger et forsøg
 
-            Console.WriteLine(" Her skal du gætte et ord på 4 bukstaver");
+            string[] HNGord = new[] {"kaffe", "Kage", "cykel", "Danmark", "opgave"}; //Her har jeg lavet et Array med mine ord, og navngivet det HNGord hvor HNG er for at kategorisere spillets værdityper
+            string HNGordrnd = HNGord[new Random().Next(0, HNGord.Length)];
 
-            string[,] HNGord1 = new string[4, 1];
-            HNGord1[0, 0] = "_ ";
-            HNGord1[1, 0] = "_ ";
-            HNGord1[2, 0] = "_ ";
-            HNGord1[3, 0] = "_ ";
-            for (int i = 0; i < HNGord1.Length; i++)
+            int HNGmaxliv = 5; // kan justeres
+            int HNGliv = HNGmaxliv;
+
+            bool HNGvundet = false; //kan være jeg sletter
+
+            List<char> HNGskud = new List<char>();
+
+            while (HNGliv >=0 && ) 
             {
-                Console.Write(HNGord1[i, 0]);
-            }
-
-
-            for (int HNGraekke = 0; HNGraekke < 3; HNGraekke++)
-            {
-                for (int HNGkollone = 0; HNGkollone < 0; HNGkollone++)
+                foreach (char HNGbukstav in HNGordrnd)
                 {
-                    HNGord1[HNGraekke, HNGkollone] = "_";
-                }
+                    if (HNGskud.Contains(HNGbukstav))
+                        Console.Write(HNGbukstav);
+                    else
+                        Console.Write("_");
 
+                }
+                Console.WriteLine("");
+                Console.WriteLine("gæt et tal");
+                Console.WriteLine("du har " + HNGliv + " forsøg igen ");
+               
+
+                char HNGgaet = Convert.ToChar(Console.ReadLine());
+
+                if (HNGordrnd.Contains(HNGgaet) && !HNGskud.Contains(HNGgaet))
+                {
+                    Console.WriteLine("Det er rigtigt");
+                }
+                else
+
+                {
+                    Console.WriteLine("Det er forkert");
+                    HNGliv--;
+                }
+                HNGskud.Add(HNGgaet);
             }
+                    
+
+
+
 
 
 
