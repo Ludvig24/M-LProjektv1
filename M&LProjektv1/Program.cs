@@ -4,6 +4,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -18,10 +19,30 @@ namespace M_LProjektv1
             int spillerValg;
             while (true) // en løkke, så spillet kører, indtil vi trykker på en bestemt tast
             {
+                // Lav en rulletekst til velkomst
+                Console.ForegroundColor = ConsoleColor.Cyan;
+
+                string velkomst = "Velkommen til Sten Saks Papir";
+                int windowWidth = Console.WindowWidth;
+
+                // Beregn slut-positionen (centeret tekst)
+                int slutPos = (windowWidth - velkomst.Length) / 2;
+
+                // Start teksten udenfor skærmen og rul den ind til midten
+                for (int pos = -velkomst.Length; pos < windowWidth / 2; pos++)
+                {
+                    Console.Clear();
+                    Console.SetCursorPosition(Math.Max(pos, 0), Console.CursorTop);
+                    Console.Write(velkomst);
+                    Thread.Sleep(50); // Juster hastigheden
+                }
+
+                Console.ResetColor();
+                Console.WriteLine();
 
 
-                Console.WriteLine("Velkommen til Sten Saks Papir");
-                Console.WriteLine("Skriv dit valg 0 = Sten, 1 = Saks, 2 = Papir, tryk derefter enter.");
+
+                Console.Write("Skriv dit valg 0 = Sten, 1 = Saks, 2 = Papir, tryk derefter enter.");
                 Console.Write("Dit valg er");
 
 
