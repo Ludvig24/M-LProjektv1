@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -11,149 +12,486 @@ namespace M_LProjektv1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("velkommen til Hangman(lavet af Ludvig");
-            Console.WriteLine("");
+
+           
 
 
 
-             void HNGgaljen(int HNGforsoe)
+            Console.WriteLine("velkommen til Hangman(lavet af Ludvig"); //Lavet en velkomst til mit spil
+            Console.WriteLine(""); //bare for lidt plads
+
+            Console.WriteLine("Vælg en sværhedsgrad der går fra 1 til 3. eller du kan skrive menu for at komme tilbage til menuen");
+            
+            
+
+            HNGvalg(); //her starter jeg funktionen HNGvalg som er lavet til at vælge hvilken sværhedsgrad man skal i spillet. det er også her man kommer tilbage hvis man vil spille spillet igen
+
+            void HNGvalg()
             {
-                if (HNGforsoe == 6)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
-                }
-                else if (HNGforsoe == 5)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine("O   |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
-                }
-                else if (HNGforsoe == 4)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine("O   |");
-                    Console.WriteLine("|   |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
-                }
-                else if (HNGforsoe == 3)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O  |");
-                    Console.WriteLine("/|  |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
-                }
-                else if (HNGforsoe == 2)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O  |");
-                    Console.WriteLine("/|\\ |");
-                    Console.WriteLine("    |");
-                    Console.WriteLine("   ===");
-                }
-                else if (HNGforsoe == 2)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O  |");
-                    Console.WriteLine("/|\\ |");
-                    Console.WriteLine("/   |");
-                    Console.WriteLine("   ===");
-                }
-                else if (HNGforsoe == 1)
-                {
-                    Console.WriteLine("\n+---+");
-                    Console.WriteLine(" O   |");
-                    Console.WriteLine("/|\\  |");
-                    Console.WriteLine("/ \\  |");
-                    Console.WriteLine("    ===");
-                }
+                bool HNGretry = true; // Det her er for at lave et loop, så hvis man skriver noget andet end det jeg vil have prøver man igen
 
-            }
-            string[] HNGord = new[] { "kaffe", "kage", "cykel", "danmark", "opgave" }; //Her har jeg lavet et Array med mine ord, og navngivet det HNGord hvor HNG er for at kategorisere spillets værdityper
-            string HNGordrnd = HNGord[new Random().Next(0, HNGord.Length - 1)]; //lavet en string som er alle de ord jeg lavede før, bare i en tilfældig rækkefølge
-
-            int HNGmaxliv = 6; // Her er spillerens maximale liv, kan justeres
-            int HNGliv = HNGmaxliv; //Her er ens nuværende liv som kommer til at falde hvis man gætter forkert
-
-            bool HNGvundet = false; //det her bruges senere til at finde ud af om man har vundet
-
-            List<char> HNGpcbukstaver = new List<char>(); //Det her er for at lave en liste, lidt som en prelavet array, men så man kan taste alle bukstaver ind fra alfabetet og det vil den bruge i spillet. hedder skud for det ens forsøg
-
-            while (HNGliv > 0 && !HNGvundet)  //så længe man har over 0 liv og man ikke har tabt, så vil man spille spillet
-            {
-                foreach (char HNGbukstav in HNGordrnd) //har lavet en foreach, som vil anvendes for hvert bukstav i ordet i spillet
+                while (HNGretry)
                 {
-                    if (HNGpcbukstaver.Contains(HNGbukstav)) //hvis ens gæt er et bukstav i ordet så vil den skrive bukstavet
-                        Console.Write(HNGbukstav);
-                    else
-                        Console.Write("_"); //ellers vil den efterlade en flad streg som indikator på hvor mange bukstaver der er
+                    string HNGsvaerhedsgrad = Console.ReadLine(); //man indtaster sit indput som så bliver anvendt i switch casen
+                    switch (HNGsvaerhedsgrad) // hver switch har en funktion af spillet som den køre. forskellen på spillene er kun de ord spillet kan gennemgå
+                    {
+                        case "1":
+                            
+                            HNGspil1();
+                            
 
-                }
+                            break;
+                        case "2":
+                            HNGspil2();
+                            
+
+                            break;
+                        case "3":
+                            HNGspil3();
+                            
+
+                            break;
+                        case "menu":
+                            //skriv menu funktion
+                            
+                            break;
+
+                        default:
+                            Console.WriteLine("Du skrev ikke 1,2 eller 3, prøv igen");
+                            
+                            
+                            break;
+
+
+                    }
+                } while (HNGretry == false);
+                Console.WriteLine("det virker");
                 
-                Console.WriteLine("");
-              
-                Console.WriteLine("Skriv et bukstav"); //information til spilleren
-                Console.WriteLine("du har " + HNGliv + " forsøg igen ");  //ja, det er så ens liv
-                HNGgaljen(HNGliv);
+            }
+            Console.WriteLine("det virker");
+            
 
+            //SPIL MED SVÆRHEDSGRAD 1--------------------------------------------------
+            void HNGspil1()
+            {
 
-                char HNGgaet = Convert.ToChar(Console.ReadLine());  //her er det spilleren indtaster sit gæt. men når man taster sit gæt in bliver det til en string, så har lavet en convert for at det kan blive en char og så sammenlignes med hvert af ordes char
-
-                if (HNGordrnd.Contains(HNGgaet) && !HNGpcbukstaver.Contains(HNGgaet))
+                void HNGgaljen(int HNGforsoe) //Her er en funktion som producere spillets galje og laver et visuelt over ens ''liv''
                 {
-                    Console.WriteLine("Det er rigtigt");
+                    if (HNGforsoe == 6)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 5)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("O   |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 4)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("O   |");
+                        Console.WriteLine("|   |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 3)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|  |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 2)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|\\ |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 2)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|\\ |");
+                        Console.WriteLine("/   |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 1)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O   |");
+                        Console.WriteLine("/|\\  |");
+                        Console.WriteLine("/ \\  |");
+                        Console.WriteLine("    ===");
+                    }
+
                 }
+
+
+                string[] HNGord = new[] { "kaffe", "kage", "cykel", "danmark", "opgave", "ged", "hund", "kat", "sko","salt","stol", "sofa","hest","gris","pasta" }; //Her har jeg lavet et Array med mine ord, og navngivet det HNGord hvor HNG er for at kategorisere spillets værdityper
+                //og så står der et tal ud foran HNGord og det er tilbage fra  da man valgte sværhedsgrad
+                string HNGordrnd = HNGord[new Random().Next(0, HNGord.Length - 1)]; //lavet en string som er alle de ord jeg lavede før, bare i en tilfældig rækkefølge
+                int HNGmaxliv = 6; // Her er spillerens maximale
+                int HNGliv = HNGmaxliv; //Her er ens nuværende liv som kommer til at falde hvis man gætter forkert
+
+                bool HNGvundet = false; //det her bruges senere til at finde ud af om man har vundet
+
+                List<char> HNGpcBukstaver = new List<char>(); //Det her er for at lave en liste, lidt som en prelavet array, men så man kan taste alle bukstaver ind fra alfabetet og det vil den bruge i spillet. 
+
+                while (HNGliv > 0 && !HNGvundet)  //så længe man har over 0 liv og man ikke har tabt, så vil man spille spillet
+                {
+                    foreach (char HNGbukstav in HNGordrnd) //har lavet en foreach, som vil anvendes for hvert bukstav i ordet i spillet
+                    {
+                        if (HNGpcBukstaver.Contains(HNGbukstav)) //hvis ens gæt er et bukstav i ordet så vil den skrive bukstavet
+                            Console.Write(HNGbukstav);
+                        else
+                            Console.Write("_"); //ellers vil den efterlade en flad streg som indikator på hvor mange bukstaver der er
+
+                    }
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Skriv et bukstav"); //information til spilleren
+                    Console.WriteLine("du har " + HNGliv + " forsøg igen ");  //ja, det er så ens liv
+                    HNGgaljen(HNGliv);
+
+
+                    char HNGgaet = Convert.ToChar(Console.ReadLine());  //her er det spilleren indtaster sit gæt. men når man taster sit gæt in bliver det til en string, så har lavet en convert for at det kan blive en char og så sammenlignes med hvert af ordes char
+                    //Problemet med det her er at man kun kan skrive char, har prøvet længe på at finde en løsning til hvordan den skulle sige ''skriv igen'' hvis man tastede en string ind. men gav op
+
+                    if (HNGordrnd.Contains(HNGgaet) && !HNGpcBukstaver.Contains(HNGgaet)) //hvis spillets tilfældige ord indeholder ens gæt OG computerens bukstaver ikke indeholder ens gæt. så får man enten rigtig eller forkert og midster et liv
+                    {
+                        Console.WriteLine("Det er rigtigt");
+                    }
+                    else
+
+                    {
+                        Console.WriteLine("Det er forkert");
+                        HNGliv--;
+                    }
+                    HNGpcBukstaver.Add(HNGgaet); //Her så vil den tilføje det man skrev som sit gæt ind på List med PCbukstaver
+
+
+                    bool HNGslut = true;// for at kunne afslute før man midster alle sine liv
+
+                    foreach (char HNGbukstav in HNGordrnd) //kontrollere om alle bukstaverne er gættet
+                        if (!HNGpcBukstaver.Contains(HNGbukstav))
+                            HNGslut = false;
+
+                    HNGvundet = HNGslut; //Laver det om til man har vundet hvis man havde gættet alt rigtigt
+
+
+                }
+
+
+                    if (HNGvundet)
+                        Console.WriteLine("Sådan, du vandt!");
+
+                    else
+                        Console.WriteLine("Øv, bedre held næste gang");
+
+
+             
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Nu hvor du er færdig, kunne du så tænke dig at spille igen eller retunere til menuen?");
+                    Console.WriteLine("Skriv 'igen' for at spille igen eller skriv 'menu' for at gå til menuen");
+                    string HNGdone = Console.ReadLine(); // tilføj switchen med menuen som er nederst på alle spil
+             }
+
+            //SPIL MED SVÆRHEDSGRAD 2---------------------------------------------------
+            void HNGspil2()
+            {
+
+                void HNGgaljen(int HNGforsoe) //Her er en funktion som producere spillets galje og laver et visuelt over ens ''liv''
+                {
+                    if (HNGforsoe == 6)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 5)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("O   |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 4)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("O   |");
+                        Console.WriteLine("|   |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 3)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|  |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 2)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|\\ |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 2)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|\\ |");
+                        Console.WriteLine("/   |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 1)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O   |");
+                        Console.WriteLine("/|\\  |");
+                        Console.WriteLine("/ \\  |");
+                        Console.WriteLine("    ===");
+                    }
+
+                }
+
+
+                string[] HNGord = new[] { "lektier", "chef", "elefant","giraf", "tandpasta", "hundeslaede","stationaer","rynkeby","termokop","haandvask", "github" }; //Her har jeg lavet et Array med mine ord, og navngivet det HNGord hvor HNG er for at kategorisere spillets værdityper
+                //og så står der et tal ud foran HNGord og det er tilbage fra  da man valgte sværhedsgrad
+                string HNGordrnd = HNGord[new Random().Next(0, HNGord.Length - 1)]; //lavet en string som er alle de ord jeg lavede før, bare i en tilfældig rækkefølge
+                int HNGmaxliv = 6; // Her er spillerens maximale
+                int HNGliv = HNGmaxliv; //Her er ens nuværende liv som kommer til at falde hvis man gætter forkert
+
+                bool HNGvundet = false; //det her bruges senere til at finde ud af om man har vundet
+
+                List<char> HNGpcBukstaver = new List<char>(); //Det her er for at lave en liste, lidt som en prelavet array, men så man kan taste alle bukstaver ind fra alfabetet og det vil den bruge i spillet. 
+
+                while (HNGliv > 0 && !HNGvundet)  //så længe man har over 0 liv og man ikke har tabt, så vil man spille spillet
+                {
+                    foreach (char HNGbukstav in HNGordrnd) //har lavet en foreach, som vil anvendes for hvert bukstav i ordet i spillet
+                    {
+                        if (HNGpcBukstaver.Contains(HNGbukstav)) //hvis ens gæt er et bukstav i ordet så vil den skrive bukstavet
+                            Console.Write(HNGbukstav);
+                        else
+                            Console.Write("_"); //ellers vil den efterlade en flad streg som indikator på hvor mange bukstaver der er
+
+                    }
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Skriv et bukstav"); //information til spilleren
+                    Console.WriteLine("du har " + HNGliv + " forsøg igen ");  //ja, det er så ens liv
+                    HNGgaljen(HNGliv);
+
+
+                    char HNGgaet = Convert.ToChar(Console.ReadLine());  //her er det spilleren indtaster sit gæt. men når man taster sit gæt in bliver det til en string, så har lavet en convert for at det kan blive en char og så sammenlignes med hvert af ordes char
+                    //Problemet med det her er at man kun kan skrive char, har prøvet længe på at finde en løsning til hvordan den skulle sige ''skriv igen'' hvis man tastede en string ind. men gav op
+
+                    if (HNGordrnd.Contains(HNGgaet) && !HNGpcBukstaver.Contains(HNGgaet)) //hvis spillets tilfældige ord indeholder ens gæt OG computerens bukstaver ikke indeholder ens gæt. så får man enten rigtig eller forkert og midster et liv
+                    {
+                        Console.WriteLine("Det er rigtigt");
+                    }
+                    else
+
+                    {
+                        Console.WriteLine("Det er forkert");
+                        HNGliv--;
+                    }
+                    HNGpcBukstaver.Add(HNGgaet); //Her så vil den tilføje det man skrev som sit gæt ind på List med PCbukstaver
+
+
+                    bool HNGslut = true;// for at kunne afslute før man midster alle sine liv
+
+                    foreach (char HNGbukstav in HNGordrnd) //kontrollere om alle bukstaverne er gættet
+                        if (!HNGpcBukstaver.Contains(HNGbukstav))
+                            HNGslut = false;
+
+                    HNGvundet = HNGslut; //Laver det om til man har vundet hvis man havde gættet alt rigtigt
+
+
+                }
+
+
+                if (HNGvundet)
+                    Console.WriteLine("Sådan, du vandt!");
+
                 else
+                    Console.WriteLine("Øv, bedre held næste gang");
 
+
+
+
+                Console.WriteLine("");
+                Console.WriteLine("Nu hvor du er færdig, kunne du så tænke dig at spille igen eller retunere til menuen?");
+                Console.WriteLine("Skriv 'igen' for at spille igen eller skriv 'menu' for at gå til menuen");
+                string HNGdone = Console.ReadLine(); // tilføj switchen med menuen som er nederst på alle spil
+            }
+            //SPIL med sværhedsgrad 3!!!-------------------------------------------------------------------------------
+            void HNGspil3()
+            {
+
+                void HNGgaljen(int HNGforsoe) //Her er en funktion som producere spillets galje og laver et visuelt over ens ''liv''
                 {
-                    Console.WriteLine("Det er forkert");
-                    HNGliv--;
+                    if (HNGforsoe == 6)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 5)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("O   |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 4)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine("O   |");
+                        Console.WriteLine("|   |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 3)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|  |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 2)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|\\ |");
+                        Console.WriteLine("    |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 2)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O  |");
+                        Console.WriteLine("/|\\ |");
+                        Console.WriteLine("/   |");
+                        Console.WriteLine("   ===");
+                    }
+                    else if (HNGforsoe == 1)
+                    {
+                        Console.WriteLine("\n+---+");
+                        Console.WriteLine(" O   |");
+                        Console.WriteLine("/|\\  |");
+                        Console.WriteLine("/ \\  |");
+                        Console.WriteLine("    ===");
+                    }
+
                 }
-                HNGpcbukstaver.Add(HNGgaet);
 
 
-                bool HNGslut = true;
+                string[] HNGord = new[] { "astronaut","elevatorskakt","accellerere","financiere","diciplin", "ministerie", "pencillin", "reflektion", "staniol", "allesammen","medlemsskab","checke","kontrollere","anderkendelse","microsoftvision" }; //Her har jeg lavet et Array med mine ord, og navngivet det HNGord hvor HNG er for at kategorisere spillets værdityper
+                //og så står der et tal ud foran HNGord og det er tilbage fra  da man valgte sværhedsgrad
+                string HNGordrnd = HNGord[new Random().Next(0, HNGord.Length - 1)]; //lavet en string som er alle de ord jeg lavede før, bare i en tilfældig rækkefølge
+                int HNGmaxliv = 6; // Her er spillerens maximale
+                int HNGliv = HNGmaxliv; //Her er ens nuværende liv som kommer til at falde hvis man gætter forkert
 
-                foreach (char HNGbukstav in HNGordrnd)
-                    if (!HNGpcbukstaver.Contains(HNGbukstav))
-                        HNGslut = false;
+                bool HNGvundet = false; //det her bruges senere til at finde ud af om man har vundet
 
-                HNGvundet = HNGslut;
+                List<char> HNGpcBukstaver = new List<char>(); //Det her er for at lave en liste, lidt som en prelavet array, men så man kan taste alle bukstaver ind fra alfabetet og det vil den bruge i spillet. 
+
+                while (HNGliv > 0 && !HNGvundet)  //så længe man har over 0 liv og man ikke har tabt, så vil man spille spillet
+                {
+                    foreach (char HNGbukstav in HNGordrnd) //har lavet en foreach, som vil anvendes for hvert bukstav i ordet i spillet
+                    {
+                        if (HNGpcBukstaver.Contains(HNGbukstav)) //hvis ens gæt er et bukstav i ordet så vil den skrive bukstavet
+                            Console.Write(HNGbukstav);
+                        else
+                            Console.Write("_"); //ellers vil den efterlade en flad streg som indikator på hvor mange bukstaver der er
+
+                    }
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Skriv et bukstav"); //information til spilleren
+                    Console.WriteLine("du har " + HNGliv + " forsøg igen ");  //ja, det er så ens liv
+                    HNGgaljen(HNGliv);
 
 
+                    char HNGgaet = Convert.ToChar(Console.ReadLine());  //her er det spilleren indtaster sit gæt. men når man taster sit gæt in bliver det til en string, så har lavet en convert for at det kan blive en char og så sammenlignes med hvert af ordes char
+                    //Problemet med det her er at man kun kan skrive char, har prøvet længe på at finde en løsning til hvordan den skulle sige ''skriv igen'' hvis man tastede en string ind. men gav op
+
+                    if (HNGordrnd.Contains(HNGgaet) && !HNGpcBukstaver.Contains(HNGgaet)) //hvis spillets tilfældige ord indeholder ens gæt OG computerens bukstaver ikke indeholder ens gæt. så får man enten rigtig eller forkert og midster et liv
+                    {
+                        Console.WriteLine("Det er rigtigt");
+                    }
+                    else
+
+                    {
+                        Console.WriteLine("Det er forkert");
+                        HNGliv--;
+                    }
+                    HNGpcBukstaver.Add(HNGgaet); //Her så vil den tilføje det man skrev som sit gæt ind på List med PCbukstaver
+
+
+                    bool HNGslut = true;// for at kunne afslute før man midster alle sine liv
+
+                    foreach (char HNGbukstav in HNGordrnd) //kontrollere om alle bukstaverne er gættet
+                        if (!HNGpcBukstaver.Contains(HNGbukstav))
+                            HNGslut = false;
+
+                    HNGvundet = HNGslut; //Laver det om til man har vundet hvis man havde gættet alt rigtigt
+
+
+                }
+
+
+                if (HNGvundet)
+                    Console.WriteLine("Sådan, du vandt!");
+
+                else
+                    Console.WriteLine("Øv, bedre held næste gang");
+
+
+
+
+                Console.WriteLine("");
+                Console.WriteLine("Nu hvor du er færdig, kunne du så tænke dig at spille igen eller retunere til menuen?");
+                Console.WriteLine("Skriv 'igen' for at spille igen eller skriv 'menu' for at gå til menuen");
+                string HNGdone = Console.ReadLine(); // tilføj switchen med menuen som er nederst på alle spil
+            }
+            /*
+            switch(HNGdone)
+            { case "igen":
+                    HNGvalg();
+                        break;
+                case "menu":
+                    //skrin funktionen menu
+                    break;
             }
 
-            if (HNGvundet)
-                Console.WriteLine("Sådan, du vandt!");
 
-            else
-                Console.WriteLine("Øv, bedre held næste gang");
-
-
-
-
-
-            // skal huske at have en mulighed for at kunne retunere til menuen
-
-
-
-
-
-
-
-
-
-
-            //MADS SPIL 
-
-
+*/
 
 
 
