@@ -135,59 +135,73 @@ namespace M_LProjektv1
                             {
                                 if (HNGforsoe == 7)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 6)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 5)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
                                     Console.WriteLine("|   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 4)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|  |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 3)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|\\ |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 2)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|\\ |");
                                     Console.WriteLine("/   |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 1)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O   |");
                                     Console.WriteLine("/|\\  |");
                                     Console.WriteLine("/ \\  |");
                                     Console.WriteLine("    ===");
+                                    Console.ResetColor();
                                 }
 
                             }
@@ -196,7 +210,7 @@ namespace M_LProjektv1
                             string[] HNGord = new[] { "kaffe", "kage", "cykel", "danmark", "opgave", "ged", "hund", "kat", "sko", "salt", "stol", "sofa", "hest", "gris", "pasta" }; //Her har jeg lavet et Array med mine ord, og navngivet det HNGord hvor HNG er for at kategorisere spillets værdityper
                                                                                                                                                                                      //og så står der et tal ud foran HNGord og det er tilbage fra  da man valgte sværhedsgrad
                             string HNGordrnd = HNGord[new Random().Next(0, HNGord.Length - 1)]; //lavet en string som er alle de ord jeg lavede før, bare i en tilfældig rækkefølge
-                            int HNGmaxliv = 6; // Her er spillerens maximale
+                            int HNGmaxliv = 7; // Her er spillerens maximale
                             int HNGliv = HNGmaxliv; //Her er ens nuværende liv som kommer til at falde hvis man gætter forkert
 
                             bool HNGvundet = false; //det her bruges senere til at finde ud af om man har vundet
@@ -283,59 +297,73 @@ namespace M_LProjektv1
                             {
                                 if (HNGforsoe == 7)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 6)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 5)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
                                     Console.WriteLine("|   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 4)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|  |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 3)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|\\ |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 2)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|\\ |");
                                     Console.WriteLine("/   |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 1)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O   |");
                                     Console.WriteLine("/|\\  |");
                                     Console.WriteLine("/ \\  |");
                                     Console.WriteLine("    ===");
+                                    Console.ResetColor();
                                 }
 
                             }
@@ -430,59 +458,73 @@ namespace M_LProjektv1
                             {
                                 if (HNGforsoe == 7)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 6)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 5)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
                                     Console.WriteLine("|   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 4)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|  |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 3)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|\\ |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 2)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
                                     Console.WriteLine("/|\\ |");
                                     Console.WriteLine("/   |");
                                     Console.WriteLine("   ===");
+                                    Console.ResetColor();
                                 }
                                 else if (HNGforsoe == 1)
                                 {
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O   |");
                                     Console.WriteLine("/|\\  |");
                                     Console.WriteLine("/ \\  |");
                                     Console.WriteLine("    ===");
+                                    Console.ResetColor();
                                 }
 
                             }
