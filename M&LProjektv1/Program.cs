@@ -108,7 +108,7 @@ namespace M_LProjektv1
 
                                         break;
                                     case "menu":
-                                        //skriv menu funktion
+                                        menu();
 
                                         break;
 
@@ -120,11 +120,11 @@ namespace M_LProjektv1
 
 
                                 }
-                            } while (HNGretry == false) ;
-                            Console.WriteLine("det virker");
+                            } while (HNGretry == false) ; //for at lave lykken
+                            
 
                         }
-                        Console.WriteLine("det virker");
+                        
 
 
                         //SPIL MED SVÆRHEDSGRAD 1--------------------------------------------------
@@ -133,10 +133,18 @@ namespace M_LProjektv1
 
                             void HNGgaljen(int HNGforsoe) //Her er en funktion som producere spillets galje og laver et visuelt over ens ''liv''
                             {
-                                if (HNGforsoe == 6)
+                                if (HNGforsoe == 7)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("    |");
+                                    Console.WriteLine("    |");
+                                    Console.WriteLine("    |");
+                                    Console.WriteLine("   ===");
+                                }
+                                else if (HNGforsoe == 6)
+                                {
+                                    Console.WriteLine("\n+---+");
+                                    Console.WriteLine("O   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
@@ -145,19 +153,11 @@ namespace M_LProjektv1
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
-                                    Console.WriteLine("    |");
-                                    Console.WriteLine("    |");
-                                    Console.WriteLine("   ===");
-                                }
-                                else if (HNGforsoe == 4)
-                                {
-                                    Console.WriteLine("\n+---+");
-                                    Console.WriteLine("O   |");
                                     Console.WriteLine("|   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
                                 }
-                                else if (HNGforsoe == 3)
+                                else if (HNGforsoe == 4)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
@@ -165,7 +165,7 @@ namespace M_LProjektv1
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
                                 }
-                                else if (HNGforsoe == 2)
+                                else if (HNGforsoe == 3)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
@@ -262,9 +262,10 @@ namespace M_LProjektv1
                             Console.WriteLine("Nu hvor du er færdig, kunne du så tænke dig at spille igen eller retunere til menuen?");
                             Console.WriteLine("Skriv 'igen' for at spille igen eller skriv 'menu' for at gå til menuen");
                             string HNGdone = Console.ReadLine();
-                            switch (HNGdone)
+                            switch (HNGdone)//Her kommer der et valg om man vil spille igen eller om man vil tilbage til menuen
                             {
                                 case "igen":
+                                    Console.WriteLine("Vælg en sværhedsgrad der går fra 1 til 3. eller du kan skrive menu for at komme tilbage til menuen");
                                     HNGvalg();
                                     break;
                                 case "menu":
@@ -280,10 +281,18 @@ namespace M_LProjektv1
 
                             void HNGgaljen(int HNGforsoe) //Her er en funktion som producere spillets galje og laver et visuelt over ens ''liv''
                             {
-                                if (HNGforsoe == 6)
+                                if (HNGforsoe == 7)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("    |");
+                                    Console.WriteLine("    |");
+                                    Console.WriteLine("    |");
+                                    Console.WriteLine("   ===");
+                                }
+                                else if (HNGforsoe == 6)
+                                {
+                                    Console.WriteLine("\n+---+");
+                                    Console.WriteLine("O   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
@@ -292,19 +301,11 @@ namespace M_LProjektv1
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
-                                    Console.WriteLine("    |");
-                                    Console.WriteLine("    |");
-                                    Console.WriteLine("   ===");
-                                }
-                                else if (HNGforsoe == 4)
-                                {
-                                    Console.WriteLine("\n+---+");
-                                    Console.WriteLine("O   |");
                                     Console.WriteLine("|   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
                                 }
-                                else if (HNGforsoe == 3)
+                                else if (HNGforsoe == 4)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
@@ -312,7 +313,7 @@ namespace M_LProjektv1
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
                                 }
-                                else if (HNGforsoe == 2)
+                                else if (HNGforsoe == 3)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
@@ -409,9 +410,10 @@ namespace M_LProjektv1
                             Console.WriteLine("Nu hvor du er færdig, kunne du så tænke dig at spille igen eller retunere til menuen?");
                             Console.WriteLine("Skriv 'igen' for at spille igen eller skriv 'menu' for at gå til menuen");
                             string HNGdone = Console.ReadLine();
-                            switch (HNGdone)
+                            switch (HNGdone)//Her kommer der et valg om man vil spille igen eller om man vil tilbage til menuen
                             {
                                 case "igen":
+                                    Console.WriteLine("Vælg en sværhedsgrad der går fra 1 til 3. eller du kan skrive menu for at komme tilbage til menuen");
                                     HNGvalg();
                                     break;
                                 case "menu":
@@ -426,10 +428,18 @@ namespace M_LProjektv1
 
                             void HNGgaljen(int HNGforsoe) //Her er en funktion som producere spillets galje og laver et visuelt over ens ''liv''
                             {
-                                if (HNGforsoe == 6)
+                                if (HNGforsoe == 7)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("    |");
+                                    Console.WriteLine("    |");
+                                    Console.WriteLine("    |");
+                                    Console.WriteLine("   ===");
+                                }
+                                else if (HNGforsoe == 6)
+                                {
+                                    Console.WriteLine("\n+---+");
+                                    Console.WriteLine("O   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
@@ -438,19 +448,11 @@ namespace M_LProjektv1
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine("O   |");
-                                    Console.WriteLine("    |");
-                                    Console.WriteLine("    |");
-                                    Console.WriteLine("   ===");
-                                }
-                                else if (HNGforsoe == 4)
-                                {
-                                    Console.WriteLine("\n+---+");
-                                    Console.WriteLine("O   |");
                                     Console.WriteLine("|   |");
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
                                 }
-                                else if (HNGforsoe == 3)
+                                else if (HNGforsoe == 4)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
@@ -458,7 +460,7 @@ namespace M_LProjektv1
                                     Console.WriteLine("    |");
                                     Console.WriteLine("   ===");
                                 }
-                                else if (HNGforsoe == 2)
+                                else if (HNGforsoe == 3)
                                 {
                                     Console.WriteLine("\n+---+");
                                     Console.WriteLine(" O  |");
@@ -557,14 +559,16 @@ namespace M_LProjektv1
                             string HNGdone = Console.ReadLine(); // tilføj switchen med menuen som er nederst på alle spil
 
 
-                            switch (HNGdone)
+                            switch (HNGdone) //Her kommer der et valg om man vil spille igen eller om man vil tilbage til menuen
                             {
                                 case "igen":
+                                    Console.WriteLine("Vælg en sværhedsgrad der går fra 1 til 3. eller du kan skrive menu for at komme tilbage til menuen");
                                     HNGvalg();
                                     break;
                                 case "menu":
                                     menu();
                                     break;
+                               
                             }
                         }
 
