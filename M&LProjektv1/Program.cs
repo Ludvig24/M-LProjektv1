@@ -14,43 +14,28 @@ namespace M_LProjektv1
     {
         static void Main(string[] args)
         {
+            void MadsSpil()
+            { 
             int spillerPoint = 0; //Spillerens point
             int computerPoint = 0; // Computerens point
             int spillerValg;
             while (true) // en løkke, så spillet kører, indtil vi trykker på en bestemt tast
             {
-                // Lav en rulletekst til velkomst
-                Console.ForegroundColor = ConsoleColor.Cyan;
-
-                string velkomst = "Velkommen til Sten Saks Papir";
-                int windowWidth = Console.WindowWidth;
-
-                // Beregn slut-positionen (centeret tekst)
-                int slutPos = (windowWidth - velkomst.Length) / 2;
-
-                // Start teksten udenfor skærmen og rul den ind til midten
-                for (int pos = -velkomst.Length; pos < windowWidth / 2; pos++)
-                {
-                    Console.Clear();
-                    Console.SetCursorPosition(Math.Max(pos, 0), Console.CursorTop);
-                    Console.Write(velkomst);
-                    Thread.Sleep(50); // Juster hastigheden
-                }
-
-                Console.ResetColor();
+                
+                Console.WriteLine("Velkommen til Sten Saks Papir");
+                
                 Console.WriteLine();
 
-
-
                 Console.Write("Skriv dit valg 0 = Sten, 1 = Saks, 2 = Papir, tryk derefter enter.");
+
                 Console.Write("Dit valg er");
 
 
                 ;//int.parse = Prøver at lave teksten om til et helt tal (int)
-                                                                //Programmet venter på, at spilleren skriver noget.
-                                                                //Det, spilleren skriver, bliver gemt som tekst.
-                                                                //int.Parse prøver at lave teksten om til et heltal.
-                                                                //Til sidst bliver tallet gemt i variablen spillerValg
+                 //Programmet venter på, at spilleren skriver noget.
+                 //Det, spilleren skriver, bliver gemt som tekst.
+                 //int.Parse prøver at lave teksten om til et heltal.
+                 //Til sidst bliver tallet gemt i variablen spillerValg
 
                 Random rnd = new Random();
 
@@ -60,16 +45,16 @@ namespace M_LProjektv1
 
                 //Viser spillernes valg
 
-               
+
 
                 string input = Console.ReadLine()?.Trim().ToLower();
 
                 // Stop spillet hvis brugeren skriver 'q'
                 if (input == "q") break;
+                if (input == "menu") break;
+                
 
                 // Deklarér spillerValg én gang udenfor TryParse
-                
-               
                 if (!int.TryParse(input, out spillerValg) || spillerValg < 0 || spillerValg > 2)
                 {
                     Console.WriteLine("Ugyldigt input! Du skal skrive 0, 1 eller 2 ;)");
@@ -98,8 +83,8 @@ namespace M_LProjektv1
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Du vandt!");
-                    Console.ResetColor();
-                    spillerPoint++;
+                    Console.ResetColor();//Så linjen efter ikke også bliver grøn
+                    spillerPoint++; //Point til spiller
                 }
 
 
